@@ -107,7 +107,7 @@ public class TabelaHashEnderecamentoAberto {
             else {
                 System.out.printf("%nValor inválido. Digitar valor entre (100-999).");
             }
-            //ArrayUtils.imprimir(tabelaHash.tabela);
+
             System.out.println("");
             ArrayUtils.imprimirComPosicao(tabelaHash.tabela);
             System.out.printf("%n Quantidade de valores validos na tabela = %d", tabelaHash.quantidade);
