@@ -1,0 +1,49 @@
+Mostre a codificação de compressão RLE para as cadeias de bits abaixo,
+utilizando 4 bits para representar a quantidade:
+a) 0 0 0 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 
+b) 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0
+c) 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1
+d) 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1
+Qual foi a taxa de compressão obtida em cada uma das cadeias?
+
+TABELA DE BINÁRIOS
+0000 -> 0
+0001 -> 1
+0010 -> 2
+0011 -> 3
+0100 -> 4
+0101 -> 5
+0110 -> 6
+0111 -> 7
+1000 -> 8
+1001 -> 9
+1010 -> 10
+1011 -> 11
+1100 -> 12
+1101 -> 13
+1110 -> 14
+1111 -> 15
+
+RESOLUÇÃO
+
+a) 1000 0100 0110 1100
+
+b) 1100 1110 0100
+
+c) 0000 1100 1100 0100
+(precisa começar contando quantos 0's possui)
+
+d) 0000 1111 0000 0001 1111 0100
+
+Qual foi a taxa de compressão obtida em cada uma das cadeias?
+
+a) 100 - 16/30 = 47%
+
+b) 100 - 12/30 = 60%
+
+c) 100 - 16/34 = 53%
+
+d) 100 - 24/35 = 31%
+*/
+
+
