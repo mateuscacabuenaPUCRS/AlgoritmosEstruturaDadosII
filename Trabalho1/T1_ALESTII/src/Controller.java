@@ -32,57 +32,89 @@ public class Controller {
                     ar = new ArchiveReader("ct_10.txt");
                     ar.read();
                     lista = ar.getLista();
+                    long startTime = System.currentTimeMillis();
                     lista.deteriorar();
-                    System.out.println("\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
+                    System.out.println(
+                            "Tempo de execução: " + (System.currentTimeMillis() - startTime) + " milissegundos");
+                    System.out.println(
+                            "\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
                     break;
                 case 2:
                     ar = new ArchiveReader("ct_100.txt");
                     ar.read();
                     lista = ar.getLista();
+                    long startTime2 = System.currentTimeMillis();
                     lista.deteriorar();
-                    System.out.println("\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
+                    System.out.println(
+                            "Tempo de execução: " + (System.currentTimeMillis() - startTime2) + " milissegundos");
+                    System.out.println(
+                            "\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
                     break;
                 case 3:
                     ar = new ArchiveReader("ct_1000.txt");
                     ar.read();
                     lista = ar.getLista();
+                    long startTime3 = System.currentTimeMillis();
                     lista.deteriorar();
-                    System.out.println("\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
+                    System.out.println(
+                            "Tempo de execução: " + (System.currentTimeMillis() - startTime3) + " milissegundos");
+                    System.out.println(
+                            "\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
                     break;
                 case 4:
                     ar = new ArchiveReader("ct_10000.txt");
                     ar.read();
                     lista = ar.getLista();
+                    long startTime4 = System.currentTimeMillis();
                     lista.deteriorar();
-                    System.out.println("\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
+                    System.out.println(
+                            "Tempo de execução: " + (System.currentTimeMillis() - startTime4) + " milissegundos");
+                    System.out.println(
+                            "\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
                     break;
                 case 5:
                     ar = new ArchiveReader("ct_10004.txt");
                     ar.read();
                     lista = ar.getLista();
+                    long startTime5 = System.currentTimeMillis();
                     lista.deteriorar();
-                    System.out.println("\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
+                    System.out.println(
+                            "Tempo de execução: " + (System.currentTimeMillis() - startTime5) + " milissegundos");
+                    System.out.println(
+                            "\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
                     break;
                 case 6:
                     ar = new ArchiveReader("ct_100000.txt");
                     ar.read();
                     lista = ar.getLista();
+                    long startTime6 = System.currentTimeMillis();
                     lista.deteriorar();
-                    System.out.println("\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
+                    System.out.println(
+                            "Tempo de execução: " + (System.currentTimeMillis() - startTime6) + " milissegundos");
+                    System.out.println(
+                            "\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
                     break;
                 case 7:
                     ar = new ArchiveReader("ct_1000000.txt");
                     ar.read();
                     lista = ar.getLista();
+                    long startTime7 = System.currentTimeMillis();
                     lista.deteriorar();
-                    System.out.println("\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
+                    System.out.println(
+                            "Tempo de execução: " + (System.currentTimeMillis() - startTime7) + " milissegundos");
+                    System.out.println(
+                            "\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
                     break;
                 case 8:
                     ar = new ArchiveReader("ct_2000000.txt");
                     ar.read();
                     lista = ar.getLista();
+                    long startTime8 = System.currentTimeMillis();
                     lista.deteriorar();
-                    System.out.println("\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
+                    System.out.println(
+                            "Tempo de execução: " + (System.currentTimeMillis() - startTime8) + " milissegundos");
+                    System.out.println(
+                            "\n" + "Cadeia deteriorada: " + lista + "\n" + "Tamanho da cadeia: " + lista.size() + "\n");
                     break;
                 case 0:
                     System.out.println("Saindo...");
