@@ -9,17 +9,25 @@ import java.util.Scanner;
 public class DigrafoValorado {
     private int numeroArestas;
     private int numeroVertices;
+    private int custo;
+    // private ArestaDirecionadaValorada ultimaAresta;
+    private String ultimaLinha;
     private ArrayList<ArestaDirecionadaValorada> listaAdjacencia;
     private List<String> vertices;
     private List<String> waitList;
 
     public DigrafoValorado() {
         this.numeroArestas = 0;
+        this.custo = 0;
         this.listaAdjacencia = new ArrayList<>();
         this.vertices = new ArrayList<>();
         this.waitList = new ArrayList<>();
     }
 
+    public int getCusto() {
+        return custo;
+    }
+    
     public void adicionarVertice(String vertice) {
         for (String v : vertices) {
             if (v.equals(vertice)) {
@@ -71,8 +79,13 @@ public class DigrafoValorado {
             while (scanner.hasNextLine()) {
                 String linha = scanner.nextLine();
                 adicionaDigrafo(linha);
+
+                if (!scanner.hasNextLine()) {
+                    ultimaLinha = linha;
+                }
             }
             completaDigrafo();
+            calculaCusto(ultimaLinha, listaAdjacencia);
         }
     }
 
@@ -100,6 +113,7 @@ public class DigrafoValorado {
             adicionarAresta(origem, destino, calculaHidrogenio(elementos));
 
         }
+
     }
 
     private void completaDigrafo() {
@@ -111,8 +125,8 @@ public class DigrafoValorado {
 
     private int calculaHidrogenio(List<Elemento> elementos) {
         int hidrogenio = 0;
-        for (ArestaDirecionadaValorada aresta : listaAdjacencia) {
-            for (Elemento elemento : elementos) {
+        for (Elemento elemento : elementos) {
+            for (ArestaDirecionadaValorada aresta : listaAdjacencia) {
                 if (elemento.getNome().equals(aresta.getDestino())) {
                     hidrogenio += aresta.getPeso() * elemento.getQuantidade();
                 }
@@ -121,13 +135,29 @@ public class DigrafoValorado {
         return hidrogenio;
     }
 
-    public int getCusto(String destino) {
-        int custo = 0;
-        for(ArestaDirecionadaValorada a : listaAdjacencia){
-            if(a.getDestino().equals(destino)){
-                custo = a.getPeso();
+    private int calculaCusto(String ultimaLinha, ArrayList<ArestaDirecionadaValorada> listaAdjacencia) {
+        String[] partes = ultimaLinha.split(" -> 1 |\\s+");
+        List<Elemento> elementos = new ArrayList<>();
+        for (int i = 0; i < partes.length - 1; i += 2) {
+                int quantidade = Integer.parseInt(partes[i]);
+                String nome = partes[i + 1];
+                if(!vertices.contains(nome)){
+                    waitList.add(ultimaLinha);
+                    return -1;
+                }
+                elementos.add(new Elemento(quantidade, nome));
             }
-        }
-        return custo;
+            custo = calculaHidrogenio(elementos);
+            return custo;
     }
+
+    // public int getCusto(String destino) {
+    //     int custo = 0;
+    //     for(ArestaDirecionadaValorada a : listaAdjacencia){
+    //         if(a.getDestino().equals(destino)){
+    //             custo = a.getPeso();
+    //         }
+    //     }
+    //     return custo;
+    // }
 }
