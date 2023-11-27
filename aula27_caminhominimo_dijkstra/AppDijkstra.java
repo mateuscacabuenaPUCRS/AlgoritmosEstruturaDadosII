@@ -13,7 +13,5 @@ public class AppDijkstra {
 
         Dijkstra d = new Dijkstra(g, 0);
         d.imprimirResultado();
-
-
     }
 }

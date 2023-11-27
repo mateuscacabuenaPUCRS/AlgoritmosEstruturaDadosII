@@ -30,7 +30,7 @@ public class Dijkstra {
                     else pq.enfileirar(destino, distancia[destino]);
                 }
             }
-            imprimirResultado();
+            //imprimirResultado();
         }
 
 
