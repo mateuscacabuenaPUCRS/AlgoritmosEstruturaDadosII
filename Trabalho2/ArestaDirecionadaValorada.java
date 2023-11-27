@@ -1,10 +1,10 @@
 package Trabalho2;
 
 public class ArestaDirecionadaValorada {
-    private int origem;
-    private int destino;
+    private String origem;
+    private String destino;
     private int peso;
-    public ArestaDirecionadaValorada(int origem, int destino, int peso) {
+    public ArestaDirecionadaValorada(String origem, String destino, int peso) {
         this.origem = origem;
         this.destino = destino;
         this.peso = peso;
@@ -14,11 +14,11 @@ public class ArestaDirecionadaValorada {
         return origem + " -> " + destino + " [" + peso + "]";
     }
 
-    public int getOrigem() {
+    public String getOrigem() {
         return origem;
     }
 
-    public int getDestino() {
+    public String getDestino() {
         return destino;
     }
 

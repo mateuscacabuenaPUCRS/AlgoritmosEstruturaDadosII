@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class DigrafoValorado {
     private int numeroArestas;
-    private List<List<ArestaDirecionadaValorada>> listaAdjacencia;
+    private ArrayList<ArestaDirecionadaValorada> listaAdjacencia;
     private Map<String, Integer> indiceVertices; // Mapeia o nome do vértice para seu índice inteiro
     private List<String> vertices; // Lista de vértices
 
@@ -22,22 +22,23 @@ public class DigrafoValorado {
     }
 
     public void adicionarVertice(String vertice) {
-        if (!indiceVertices.containsKey(vertice)) {
-            indiceVertices.put(vertice, vertices.size());
-            vertices.add(vertice);
-            listaAdjacencia.add(new ArrayList<>());
+        for (String v : vertices) {
+            if (v.equals(vertice)) {
+                return;
+            }
         }
+        vertices.add(vertice);
     }
 
     public void adicionarAresta(String origem, String destino, int peso) {
         adicionarVertice(origem);
         adicionarVertice(destino);
 
-        int indiceOrigem = indiceVertices.get(origem);
-        int indiceDestino = indiceVertices.get(destino);
+        // int indiceOrigem = indiceVertices.get(origem);
+        // int indiceDestino = indiceVertices.get(destino);
 
-        ArestaDirecionadaValorada a = new ArestaDirecionadaValorada(indiceOrigem, indiceDestino, peso);
-        listaAdjacencia.get(indiceOrigem).add(a);
+        ArestaDirecionadaValorada a = new ArestaDirecionadaValorada(origem, destino, peso);
+        listaAdjacencia.add(a);
         numeroArestas++;
     }
 
@@ -48,16 +49,13 @@ public class DigrafoValorado {
             resultado.append("\t\"").append(vertice).append("\";").append(System.lineSeparator());
         }
 
-        for (int i = 0; i < vertices.size(); i++) {
-            for (ArestaDirecionadaValorada aresta : listaAdjacencia.get(i)) {
-                String origem = vertices.get(i);
-                String destino = vertices.get(aresta.getDestino());
+        for (ArestaDirecionadaValorada aresta : listaAdjacencia) {
+            String origem = aresta.getOrigem();
+            String destino = aresta.getDestino();
 
-                resultado.append("\t\"").append(origem).append("\" -> \"").append(destino)
-                        .append("\"  [label=").append(aresta.getPeso()).append("];").append(System.lineSeparator());
-            }
+            resultado.append("\t\"").append(origem).append("\" -> \"").append(destino)
+                    .append("\"  [label=").append(aresta.getPeso()).append("];").append(System.lineSeparator());
         }
-
         resultado.append("}");
 
         return resultado.toString();
@@ -65,11 +63,6 @@ public class DigrafoValorado {
 
     public int getNumeroArestas() {
         return numeroArestas;
-    }
-
-    public Iterable<ArestaDirecionadaValorada> arestas(String vertice) {
-        int indice = indiceVertices.get(vertice);
-        return listaAdjacencia.get(indice);
     }
 
     public void lerArquivo(String caminhoArquivo) throws FileNotFoundException {
@@ -91,8 +84,38 @@ public class DigrafoValorado {
             String destino = partes[2];
             adicionarAresta(origem, destino, peso);
         } else {
-            //TODO: implementar
-        }
+            for (int i = 0; i < partes.length - 1; i += 2) {
+                int quantidade = Integer.parseInt(partes[i]);
+                String nome = partes[i + 1];
+                //if(!vertices.contains(nome)){}
+                elementos.add(new Elemento(quantidade, nome));
+            }
+            String origem = "hidrogenio";
+            String destino = partes[partes.length - 1];
+            adicionarAresta(origem, destino, calculaHidrogenio(elementos));
 
+        }
+    }
+
+    private int calculaHidrogenio(List<Elemento> elementos) {
+        int hidrogenio = 0;
+        for (ArestaDirecionadaValorada aresta : listaAdjacencia) {
+            for (Elemento elemento : elementos) {
+                if (elemento.getNome().equals(aresta.getDestino())) {
+                    hidrogenio += aresta.getPeso() * elemento.getQuantidade();
+                }
+            }
+        }
+        return hidrogenio;
+    }
+
+    public int getCusto(String destino) {
+        int custo = 0;
+        for(ArestaDirecionadaValorada a : listaAdjacencia){
+            if(a.getDestino().equals(destino)){
+                custo = a.getPeso();
+            }
+        }
+        return custo;
     }
 }
