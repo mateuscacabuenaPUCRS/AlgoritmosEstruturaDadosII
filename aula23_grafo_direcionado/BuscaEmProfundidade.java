@@ -9,7 +9,7 @@ public class BuscaEmProfundidade {
         visitado = new boolean[dg.getVertices()];
         antecessor = new int[dg.getVertices()];
         for(int i=0;i<dg.getVertices();i++) antecessor[i] = -1;
-        System.out.println("");
+
         buscarRecursivo(dg, origem);
     }
     private void buscarRecursivo(Digrafo dg, int vertice) {
