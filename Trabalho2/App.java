@@ -15,6 +15,7 @@ public class App {
 }
 
 /* 
+ASTERISCO = depende de um elemento que aparece posteriormente ou possui elemento duplicado e depende do dijkstra
 10 hidrogenio -> 1 iterbio
 1 hidrogenio -> 1 praseodimio
 2 hidrogenio -> 1 cromo
@@ -31,4 +32,5 @@ public class App {
 5 cesio 2 erbio -> 1 netunio (37)
 8 promecio 9 paladio -> 1 zinco (579)*
 6 zinco 1 selenio -> 1 ouro (108)*
+
  */
