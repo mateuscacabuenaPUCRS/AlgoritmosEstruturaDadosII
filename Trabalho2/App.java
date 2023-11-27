@@ -7,6 +7,7 @@ public class App {
         DigrafoValorado g = new DigrafoValorado();
         g.lerArquivo("Trabalho2\\teste.txt");
         System.out.println(g.toDot());
+        //System.out.println(g.getCusto("ouro"));
 
         //Dijkstra d = new Dijkstra(g, 0);
         //d.imprimirResultado();
