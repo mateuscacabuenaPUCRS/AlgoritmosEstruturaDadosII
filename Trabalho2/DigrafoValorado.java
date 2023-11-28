@@ -9,8 +9,7 @@ import java.util.Scanner;
 public class DigrafoValorado {
     private int numeroArestas;
     private int numeroVertices;
-    private int custo;
-    // private ArestaDirecionadaValorada ultimaAresta;
+    private long custo;
     private String ultimaLinha;
     private ArrayList<ArestaDirecionadaValorada> listaAdjacencia;
     private List<String> vertices;
@@ -24,7 +23,7 @@ public class DigrafoValorado {
         this.waitList = new ArrayList<>();
     }
 
-    public int getCusto() {
+    public long getCusto() {
         return custo;
     }
     
@@ -38,7 +37,7 @@ public class DigrafoValorado {
         numeroVertices++;
     }
 
-    public void adicionarAresta(String origem, String destino, int peso) {
+    public void adicionarAresta(String origem, String destino, long peso) {
         adicionarVertice(origem);
         adicionarVertice(destino);
 
@@ -123,7 +122,7 @@ public class DigrafoValorado {
         }
     }
 
-    private int calculaHidrogenio(List<Elemento> elementos) {
+    private long calculaHidrogenio(List<Elemento> elementos) {
         int hidrogenio = 0;
         for (Elemento elemento : elementos) {
             for (ArestaDirecionadaValorada aresta : listaAdjacencia) {
@@ -135,7 +134,7 @@ public class DigrafoValorado {
         return hidrogenio;
     }
 
-    private int calculaCusto(String ultimaLinha, ArrayList<ArestaDirecionadaValorada> listaAdjacencia) {
+    private long calculaCusto(String ultimaLinha, ArrayList<ArestaDirecionadaValorada> listaAdjacencia) {
         String[] partes = ultimaLinha.split(" -> 1 |\\s+");
         List<Elemento> elementos = new ArrayList<>();
         for (int i = 0; i < partes.length - 1; i += 2) {
@@ -150,14 +149,4 @@ public class DigrafoValorado {
             custo = calculaHidrogenio(elementos);
             return custo;
     }
-
-    // public int getCusto(String destino) {
-    //     int custo = 0;
-    //     for(ArestaDirecionadaValorada a : listaAdjacencia){
-    //         if(a.getDestino().equals(destino)){
-    //             custo = a.getPeso();
-    //         }
-    //     }
-    //     return custo;
-    // }
 }

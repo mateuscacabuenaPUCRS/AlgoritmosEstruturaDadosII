@@ -3,8 +3,8 @@ package Trabalho2;
 public class ArestaDirecionadaValorada {
     private String origem;
     private String destino;
-    private int peso;
-    public ArestaDirecionadaValorada(String origem, String destino, int peso) {
+    private long peso;
+    public ArestaDirecionadaValorada(String origem, String destino, long peso) {
         this.origem = origem;
         this.destino = destino;
         this.peso = peso;
@@ -22,7 +22,7 @@ public class ArestaDirecionadaValorada {
         return destino;
     }
 
-    public int getPeso() {
+    public long getPeso() {
         return peso;
     }
 }
